@@ -13,10 +13,10 @@ class ClaudeAccount < Formula
 
   def caveats
     <<~EOS
-      To complete setup, run:
+      To complete setup, add the following to your ~/.zshrc and reload:
 
-        echo '
-source #{pkgshare}/claude-account.sh' >> ~/.zshrc && source ~/.zshrc
+        echo 'source #{pkgshare}/claude-account.sh' >> ~/.zshrc
+        source ~/.zshrc
 
       Usage:
         claude account          Switch accounts
