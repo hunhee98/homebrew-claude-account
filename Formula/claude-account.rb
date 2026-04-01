@@ -11,38 +11,14 @@ class ClaudeAccount < Formula
     pkgshare.install "claude-account.sh"
   end
 
-  def post_install
-    zshrc      = "#{ENV["HOME"]}/.zshrc"
-    marker     = "# claude-account"
-    source_line = "source #{pkgshare}/claude-account.sh"
-    accounts   = "#{ENV["HOME"]}/.claude-accounts"
-    homes      = "#{ENV["HOME"]}/.claude-homes"
-    claude     = "#{ENV["HOME"]}/.claude"
-    current    = "#{accounts}/.current"
-
-    FileUtils.mkdir_p(accounts)
-    FileUtils.mkdir_p(homes)
-
-    FileUtils.touch(zshrc) unless File.exist?(zshrc)
-    unless File.read(zshrc).include?(marker)
-      File.open(zshrc, "a") do |f|
-        f.puts "\n#{marker}"
-        f.puts source_line
-      end
-    end
-
-    if Dir.exist?(claude) && !File.exist?(current)
-      dest = "#{accounts}/default"
-      FileUtils.cp_r(claude, dest)
-      FileUtils.mkdir_p("#{homes}/default")
-      File.symlink(dest, "#{homes}/default/.claude") unless File.exist?("#{homes}/default/.claude")
-      File.write(current, "default")
-    end
-  end
-
   def caveats
     <<~EOS
-      Run the following to apply:
+      Add the following to your ~/.zshrc:
+
+        source #{pkgshare}/claude-account.sh
+
+      Then run:
+
         source ~/.zshrc
 
       Usage:
