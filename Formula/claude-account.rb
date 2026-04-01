@@ -1,8 +1,8 @@
 class ClaudeAccount < Formula
   desc "Per-project & global account isolation for Claude Code CLI"
   homepage "https://github.com/hunhee98/claude-account"
-  url "https://github.com/hunhee98/claude-account/archive/refs/tags/v1.0.2.tar.gz"
-  sha256 "79b3b401a08ac0ffe7ce3cd8fce8d81b94ac53333d933da05df4494e0de7b21a"
+  url "https://github.com/hunhee98/claude-account/archive/refs/tags/v1.0.3.tar.gz"
+  sha256 "2385ba1dcb62eaa66826c3eee47d2d093726f9d8e8928476bea7be6f9fe91ed0"
   license "MIT"
 
   depends_on "gum"
